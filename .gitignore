@@ -40,3 +40,37 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Compiled Java class files
+*.class
+
+# Compiled Python bytecode
+*.py[cod]
+
+# Log files
+*.log
+
+# Package files
+*.jar
+
+# Maven
+target/
+
+# Unit test reports
+TEST*.xml
+
+# Applications
+*.app
+*.exe
+*.war
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+# Environment variables
+.env

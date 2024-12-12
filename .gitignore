@@ -77,3 +77,5 @@ TEST*.xml
 .env.local
 .env.stage
 .env.prod
+envinronments.dev.ts
+envinronments.ts

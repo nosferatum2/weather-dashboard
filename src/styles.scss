@@ -1,2 +1,19 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$custom-theme-colors: (
+  "primary":    $indigo-400,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+// merge with existing $theme-colors map
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);
+
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

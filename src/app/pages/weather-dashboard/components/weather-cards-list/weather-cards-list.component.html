@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center">
+    <div class="weather p-2 d-flex flex-wrap">
+        @for (card of cardsList(); track card.id) {
+            <div class="col-4">
+                <app-weather-card [card]="card" (cardRemoved)="onCardRemove($event)"></app-weather-card>
+            </div>
+        }
+    </div>
+</div>

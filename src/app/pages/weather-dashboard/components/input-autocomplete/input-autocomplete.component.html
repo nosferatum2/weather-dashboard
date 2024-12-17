@@ -1,0 +1,40 @@
+<form
+    class="g-1 p-2 row border bg-light rounded-1 position-relative"
+    [formGroup]="inputForm"
+    (ngSubmit)="onSubmit($event)"
+>
+    <div class="col px-1">
+        <label for="dataList" class="form-label fw-600">Choose city</label>
+        <div class="form-group position-relative">
+            <input
+                class="form-control clearfix"
+                id="dataList"
+                placeholder="Type to search..."
+                [formControl]="inputForm.controls['inputValue']"
+            >
+            @if (dataOptionsInput().length > 0) {
+                <ul class="dropdown-menu d-flex flex-column position-absolute list-item p-1 mt-1">
+                    @for (option of dataOptionsInput(); track trackByCoord(option)) {
+                        <li class=" dropdown-item rounded-1" (click)="selectOption(option)">
+                            <div class="">
+                                <h5 class="card-title">{{ option.name }}</h5>
+                                <span class="card-title text-muted">
+                                    {{ [option.country, option.state, option.name].filter(Boolean).join(', ') }}
+                                </span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="col-auto px-1 d-flex align-items-end">
+        <button
+            type="submit"
+            class="btn btn-primary justify-content-end"
+            [disabled]="!isValid()"
+        >
+            Add city
+        </button>
+    </div>
+</form>

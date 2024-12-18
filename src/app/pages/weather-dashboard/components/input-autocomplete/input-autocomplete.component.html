@@ -7,13 +7,16 @@
         <label for="dataList" class="form-label fw-600">Choose city</label>
         <div class="form-group position-relative">
             <input
-                class="form-control clearfix"
+                class="input form-control border-primary"
                 id="dataList"
                 placeholder="Type to search..."
                 [formControl]="inputForm.controls['inputValue']"
             >
+            <div class="suffix position-absolute top-0 end-0 bottom-0 d-flex align-items-center">
+                <app-spinner color="primary" [componentName]="INPUT_AUTOCOMPLETE_LOADING_COMPONENT"></app-spinner>
+            </div>
             @if (dataOptionsInput().length > 0) {
-                <ul class="dropdown-menu d-flex flex-column position-absolute list-item p-1 mt-1">
+                <ul class="dropdown-menu list-item d-flex position-absolute flex-column p-1 mt-1">
                     @for (option of dataOptionsInput(); track trackByCoord(option)) {
                         <li class=" dropdown-item rounded-1" (click)="selectOption(option)">
                             <div class="">

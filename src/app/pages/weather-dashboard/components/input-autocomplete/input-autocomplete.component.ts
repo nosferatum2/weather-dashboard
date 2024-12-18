@@ -3,11 +3,14 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GeolocationInfoModel } from '../../../../shared/services/geocoding-api/geolocation-info.model';
+import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
+
+export const INPUT_AUTOCOMPLETE_LOADING_COMPONENT = 'input-autocomplete';
 
 @Component({
   selector: 'app-input-autocomplete',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SpinnerComponent],
   templateUrl: './input-autocomplete.component.html',
   styleUrl: './input-autocomplete.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,6 +31,7 @@ export class InputAutocompleteComponent implements OnInit {
   public optionSelected = output<GeolocationInfoModel>()
 
   protected readonly Boolean = Boolean;
+  protected readonly INPUT_AUTOCOMPLETE_LOADING_COMPONENT = INPUT_AUTOCOMPLETE_LOADING_COMPONENT;
 
   ngOnInit(): void {
     this.inputForm.valueChanges

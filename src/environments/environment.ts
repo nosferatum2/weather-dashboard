@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
 
-  WEATHER_URL_API: "https://api.openweathermap.org/data/2.5/weather",
-  GEOCODING_URL_API: "https://api.openweathermap.org/geo/1.0/direct",
+  DOMAIN_URL: 'https://openweathermap.org',
+  BASE_API_URL: "https://api.openweathermap.org",
 
   APP_ID: "d9a0985de8cb79a9c27c212214fe390f",
 

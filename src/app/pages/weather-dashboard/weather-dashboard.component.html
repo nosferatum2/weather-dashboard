@@ -1,1 +1,10 @@
-<p class="text-center">weather-dashboard works!</p>
+<div class="container">
+    <p class="text-center">weather-dashboard works!</p>
+    <app-input-autocomplete
+        [dataOptionsInput]="dataOptionsCities()"
+        (inputChanged)="onInputChange($event)"
+        (optionSelected)="onOptionSelect($event)"
+    ></app-input-autocomplete>
+    <app-weather-cards-list [cardsList]="currentCitiesWeather()" (cardRemoved)="onCardRemove($event)"
+    ></app-weather-cards-list>
+</div>

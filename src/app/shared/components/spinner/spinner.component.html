@@ -1,0 +1,15 @@
+@if (isInProgress() | async) {
+    <!--    TODO: refactor for global loading spinner if need-->
+    <div
+        class="spinner-border spinner-border-sm"
+        role="status"
+        [ngClass]="textColor()"
+    >
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}
+
+@if ((isInProgress() | async) === false) {
+    <span><ng-content></ng-content></span>
+}
+

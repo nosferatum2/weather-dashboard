@@ -1,0 +1,28 @@
+<div class="card position-relative">
+    <span class="icon">
+        <img class="img-fluid" [src]="iconUrl"  [alt]="this.card().weather[0].description"/>
+    </span>
+    <div class="title text-primary"><h5>{{ card().name }}</h5></div>
+    <div class="temp">{{ round(card().main.temp) }}<sup>&deg;</sup>C</div>
+    <div class="row">
+        <div class="col-4 p-0 text-primary">
+            <h6 class="header">General</h6>
+            <div class="value">{{ card().weather[0].main }}</div>
+        </div>
+        <div class="col-4 p-0 text-primary">
+            <h6 class="header">Feels like</h6>
+            <div class="value">{{ round(card().main.feels_like) }}<sup>&deg;</sup>C</div>
+        </div>
+        <div class="col-4 p-0 text-primary">
+            <h6 class="header">Pressure</h6>
+            <div class="value">{{ card().main.pressure }}hPa</div>
+        </div>
+    </div>
+    <button
+        type="button"
+        class="btn-close position-absolute"
+        aria-label="Close"
+        (click)=cardRemove(card().id)
+    ></button>
+</div>
+

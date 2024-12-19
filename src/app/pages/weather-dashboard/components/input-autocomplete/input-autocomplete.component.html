@@ -7,7 +7,7 @@
         <label for="dataList" class="form-label fw-600">Choose city</label>
         <div class="form-group position-relative">
             <input
-                class="input form-control border-primary"
+                class="input form-control border-primary focus-ring-primary"
                 id="dataList"
                 placeholder="Type to search..."
                 [formControl]="inputForm.controls['inputValue']"
@@ -15,19 +15,11 @@
             <div class="suffix position-absolute top-0 end-0 bottom-0 d-flex align-items-center">
                 <app-spinner color="primary" [componentName]="INPUT_AUTOCOMPLETE_LOADING_COMPONENT"></app-spinner>
             </div>
-            @if (dataOptionsInput().length > 0) {
-                <ul class="dropdown-menu list-item d-flex position-absolute flex-column p-1 mt-1">
-                    @for (option of dataOptionsInput(); track trackByCoord(option)) {
-                        <li class=" dropdown-item rounded-1" (click)="selectOption(option)">
-                            <div class="">
-                                <h5 class="card-title">{{ option.name }}</h5>
-                                <span class="card-title text-muted">
-                                    {{ [option.country, option.state, option.name].filter(Boolean).join(', ') }}
-                                </span>
-                            </div>
-                        </li>
-                    }
-                </ul>
+            @if (menuOpened() && inputForm.value.inputValue && inputForm.value.inputValue.length > 0) {
+                <app-options-list
+                    [dataOptionsInput]="dataOptionsInput()"
+                    (optionSelected)="onOptionSelect($event)"
+                ></app-options-list>
             }
         </div>
     </div>

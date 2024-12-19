@@ -4,13 +4,14 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GeolocationInfoModel } from '../../../../shared/services/geocoding-api/geolocation-info.model';
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
+import { OptionsListComponent } from './components/options-list/options-list.component';
 
 export const INPUT_AUTOCOMPLETE_LOADING_COMPONENT = 'input-autocomplete';
 
 @Component({
   selector: 'app-input-autocomplete',
   standalone: true,
-  imports: [ReactiveFormsModule, SpinnerComponent],
+  imports: [ReactiveFormsModule, SpinnerComponent, OptionsListComponent],
   templateUrl: './input-autocomplete.component.html',
   styleUrl: './input-autocomplete.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -27,10 +28,10 @@ export class InputAutocompleteComponent implements OnInit {
   public inputChanged = output<string | null>();
 
   // Option select variables
-  private option = signal<GeolocationInfoModel | null>(null)
-  public optionSelected = output<GeolocationInfoModel>()
+  private option = signal<GeolocationInfoModel | null>(null);
+  public optionSelected = output<GeolocationInfoModel>();
+  public menuOpened = signal<boolean>(false);
 
-  protected readonly Boolean = Boolean;
   protected readonly INPUT_AUTOCOMPLETE_LOADING_COMPONENT = INPUT_AUTOCOMPLETE_LOADING_COMPONENT;
 
   ngOnInit(): void {
@@ -47,6 +48,9 @@ export class InputAutocompleteComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef)
       )
       .subscribe(val => {
+        this.menuOpened.set(true);
+        this.option.set(null);
+
         if (val.inputValue && val.inputValue.length > 0) {
           this.inputChanged.emit(val.inputValue);
         } else {
@@ -73,17 +77,11 @@ export class InputAutocompleteComponent implements OnInit {
     }
   }
 
-  public trackByCoord(option: GeolocationInfoModel): number {
-    return option.lat + option.lon
-  }
-
-  public selectOption(option: GeolocationInfoModel): void {
+  public onOptionSelect(option: GeolocationInfoModel) {
     this.option.set(option);
     this.inputChanged.emit(null);
+    this.menuOpened.set(false);
 
-    this.inputForm.controls.inputValue.patchValue(
-      [option.country, option.state, option.name].filter(Boolean).join(', '), // clear falsy values
-      { emitEvent: false }
-    );
+    this.inputForm.controls.inputValue.patchValue(option.name, { emitEvent: false });
   }
 }

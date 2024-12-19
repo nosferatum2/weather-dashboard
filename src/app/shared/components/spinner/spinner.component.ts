@@ -28,7 +28,4 @@ export class SpinnerComponent {
     return this.spinnerService.isLoading(this.componentName());
   }
 
-  constructor() {
-    this.isInProgress().subscribe(console.log);
-  }
 }

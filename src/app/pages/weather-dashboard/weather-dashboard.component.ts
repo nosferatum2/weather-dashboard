@@ -52,7 +52,14 @@ export class WeatherDashboardComponent implements OnInit {
   public onOptionSelect(cityData: GeolocationInfoModel) {
     this.weatherApiService.getCurrentWeather({ lat: cityData.lat, lon: cityData.lon })
       .pipe(
-        map(val => this.currentCitiesWeather.update(curr => [val, ...curr])),
+        map(val => {
+          if (this.currentCitiesWeather().some((card: CurrentWeatherModel) => card.id === val.id)) {
+            // TODO: show pop-up 'City already added'
+            return;
+          }
+
+          this.currentCitiesWeather.update(curr => [val, ...curr])
+        }),
         tap(() => this.localStorageService.setItem('currentCitiesWeatherList', JSON.stringify(this.currentCitiesWeather()))),
         takeUntilDestroyed(this.destroyRef)
       )

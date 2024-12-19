@@ -1,0 +1,18 @@
+@if (dataOptionsInput().length > 0) {
+    <ul class="dropdown-menu list-item d-flex position-absolute flex-column p-1 mt-1 w-100">
+        @for (option of dataOptionsInput(); track trackByCoord(option)) {
+            <li class=" dropdown-item rounded-1" (click)="selectOption(option)">
+                <h5 class="card-title">{{ option.name }}</h5>
+                <span class="card-title text-muted">
+                    {{ [option.country, option.state, option.name].filter(Boolean).join(', ') }}
+                </span>
+            </li>
+        }
+    </ul>
+} @else {
+    <ul class="dropdown-menu list-item d-flex position-absolute flex-column p-1 mt-1 w-100">
+        <li class=" dropdown-item rounded-1 disabled">
+            <h5 class="card-title">No results</h5>
+        </li>
+    </ul>
+}

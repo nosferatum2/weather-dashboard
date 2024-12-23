@@ -1,9 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
   InputSignal,
-  OnInit,
   output,
   OutputEmitterRef
 } from '@angular/core';
@@ -22,7 +22,7 @@ export const IMAGE_BASE_PATH = '/img/wn';
   styleUrl: './weather-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WeatherCardComponent implements OnInit{
+export class WeatherCardComponent {
 
   protected readonly round = round;
   private readonly domainUrl = environment.DOMAIN_URL;
@@ -30,11 +30,7 @@ export class WeatherCardComponent implements OnInit{
   card: InputSignal<CurrentWeatherModel> = input.required<CurrentWeatherModel>()
   cardRemoved: OutputEmitterRef<number> = output<number>()
 
-  iconUrl: string = '';
-
-  ngOnInit(): void {
-    this.iconUrl = this.buildIconUrl(this.card().weather)
-  }
+  iconUrl = computed((): string => this.buildIconUrl(this.card().weather))
 
   public cardRemove(id: number): void {
     this.cardRemoved.emit(id)

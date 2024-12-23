@@ -12,6 +12,5 @@ import { MAIN_LOADER } from './shared/services/spinner/spinner.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'weather-dashboard';
   protected readonly MAIN_LOADER = MAIN_LOADER;
 }

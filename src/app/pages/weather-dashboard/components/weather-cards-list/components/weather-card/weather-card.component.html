@@ -1,6 +1,6 @@
 <div class="card position-relative">
     <span class="icon">
-        <img class="img-fluid" [src]="iconUrl"  [alt]="this.card().weather[0].description"/>
+        <img class="img-fluid" [src]="iconUrl()"  [alt]="this.card().weather[0].description"/>
     </span>
     <div class="title text-primary"><h5>{{ card().name }}</h5></div>
     <div class="temp">{{ round(card().main.temp) }}<sup>&deg;</sup>C</div>

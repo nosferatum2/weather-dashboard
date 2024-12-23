@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { GeolocationInfoModel } from '../../../../../../shared/services/geocoding-api/geolocation-info.model';
 
 @Component({
@@ -6,7 +6,8 @@ import { GeolocationInfoModel } from '../../../../../../shared/services/geocodin
   standalone: true,
   imports: [],
   templateUrl: './options-list.component.html',
-  styleUrl: './options-list.component.scss'
+  styleUrl: './options-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OptionsListComponent {
 

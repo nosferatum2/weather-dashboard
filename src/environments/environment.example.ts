@@ -11,6 +11,6 @@ export const environment = {
   * Your unique API key (you can always find it on your account page under the "API key" tab)
   * https://home.openweathermap.org/api_keys
   *  */
-  APP_ID: '',
+  API_KEY: '',
 
 };

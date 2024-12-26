@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next): Observable<HttpEvent<any>> => {
 
   if (req.method === 'GET') {
-    const APP_ID = environment.APP_ID
+    const APP_ID = environment.API_KEY
 
     const request = req.clone({
       params: req.params.append('APPID', APP_ID)

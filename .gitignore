@@ -79,3 +79,8 @@ TEST*.xml
 .env.prod
 envinronments.dev.ts
 envinronments.ts
+/.vscode/extensions.json
+/.vscode/launch.json
+/.vscode/tasks.json
+/src/environments/environment.dev.ts
+/src/environments/environment.ts

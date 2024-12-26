@@ -4,8 +4,8 @@ export const environment = {
   * Actual urls will be sent via email or taken from:
   * https://openweathermap.org/api
   *  */
-  DOMAIN_URL: '',
-  BASE_API_URL: '',
+  DOMAIN_URL: 'https://openweathermap.org',
+  BASE_API_URL: 'https://api.openweathermap.org',
 
   /*
   * Your unique API key (you can always find it on your account page under the "API key" tab)

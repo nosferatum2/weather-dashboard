@@ -6,15 +6,14 @@ import { Observable } from 'rxjs';
 export type SpinnerColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 
 @Component({
-  selector: 'app-spinner',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    NgClass
-  ],
-  templateUrl: './spinner.component.html',
-  styleUrl: './spinner.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-spinner',
+    imports: [
+        AsyncPipe,
+        NgClass
+    ],
+    templateUrl: './spinner.component.html',
+    styleUrl: './spinner.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
   private spinnerService = inject(SpinnerService);

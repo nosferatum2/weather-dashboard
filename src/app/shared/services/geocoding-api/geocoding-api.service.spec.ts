@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
 import { GEOCODING_BASE_PATH, GeocodingAPIService } from './geocoding-api.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { SpinnerService } from '../spinner/spinner.service';
 import { environment } from '../../../../environments/environment';
 import { INPUT_AUTOCOMPLETE_LOADING_COMPONENT } from '../../../pages/weather-dashboard/components/input-autocomplete/input-autocomplete.component';
 import { GeolocationInfoModel } from './geolocation-info.model';
 import { mockGeolocationDataList } from '../../mock/mock-geolocation-data-list';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('GeocodingAPIService', () => {
   const BASE_API_URL: string = environment.BASE_API_URL;
@@ -21,12 +21,14 @@ describe('GeocodingAPIService', () => {
     spinnerServiceSpyMock = jasmine.createSpyObj('SpinnerService', ['setLoading']);
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         GeocodingAPIService,
-        { provide: SpinnerService, useValue: spinnerServiceSpyMock }
-      ]
-    });
+        { provide: SpinnerService, useValue: spinnerServiceSpyMock },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
 
     geocodingServiceMock = TestBed.inject(GeocodingAPIService);
     httpMock = TestBed.inject(HttpTestingController);

@@ -6,8 +6,8 @@ A simple weather dashboard application that displays detailed weather informatio
 
 ### Prerequisites
 
-* Node.js (	^18.13.0 || ^20.9.0)
-* Angular CLI (version 17 or higher)
+* Node.js (	^18.19.1 || ^20.11.1 || ^22.0.0 )
+* Angular CLI ([version 19](https://angular.dev/installation))
 * OpenWeatherMap API key (sign up for a free account
   at [https://openweathermap.org/api](https://openweathermap.org/api))
 

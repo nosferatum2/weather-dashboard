@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CURRENT_WEATHER_BASE_PATH, WeatherApiService } from './weather-api.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { environment } from '../../../../environments/environment';
 import { mockCurrentWeatherData } from '../../mock/mock-current-weather-data';
 import { CoordModel } from '../../models/coord.model';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CurrentWeatherModel } from './current-weather.model';
 
 describe('WeatherApiService', () => {
@@ -18,9 +18,9 @@ describe('WeatherApiService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [WeatherApiService]
-    });
+    imports: [],
+    providers: [WeatherApiService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     weatherApiService = TestBed.inject(WeatherApiService);
     httpMock = TestBed.inject(HttpTestingController);
   });

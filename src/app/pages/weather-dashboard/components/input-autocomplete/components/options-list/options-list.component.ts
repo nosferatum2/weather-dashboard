@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 import { GeolocationInfoModel } from '../../../../../../shared/services/geocoding-api/geolocation-info.model';
 
 @Component({
-  selector: 'app-options-list',
-  standalone: true,
-  imports: [],
-  templateUrl: './options-list.component.html',
-  styleUrl: './options-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-options-list',
+    imports: [],
+    templateUrl: './options-list.component.html',
+    styleUrl: './options-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OptionsListComponent {
 

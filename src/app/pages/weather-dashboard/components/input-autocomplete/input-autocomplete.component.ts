@@ -9,12 +9,11 @@ import { OptionsListComponent } from './components/options-list/options-list.com
 export const INPUT_AUTOCOMPLETE_LOADING_COMPONENT = 'input-autocomplete';
 
 @Component({
-  selector: 'app-input-autocomplete',
-  standalone: true,
-  imports: [ReactiveFormsModule, SpinnerComponent, OptionsListComponent],
-  templateUrl: './input-autocomplete.component.html',
-  styleUrl: './input-autocomplete.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-input-autocomplete',
+    imports: [ReactiveFormsModule, SpinnerComponent, OptionsListComponent],
+    templateUrl: './input-autocomplete.component.html',
+    styleUrl: './input-autocomplete.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputAutocompleteComponent implements OnInit {
   private fb = inject(FormBuilder);

@@ -15,12 +15,11 @@ import { WeatherModel } from '../../../../../../shared/services/weather-api/weat
 export const IMAGE_BASE_PATH = '/img/wn';
 
 @Component({
-  selector: 'app-weather-card',
-  standalone: true,
-  imports: [],
-  templateUrl: './weather-card.component.html',
-  styleUrl: './weather-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-weather-card',
+    imports: [],
+    templateUrl: './weather-card.component.html',
+    styleUrl: './weather-card.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherCardComponent {
 

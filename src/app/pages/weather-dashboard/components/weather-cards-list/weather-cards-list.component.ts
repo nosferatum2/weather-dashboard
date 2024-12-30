@@ -3,14 +3,13 @@ import { WeatherCardComponent } from './components/weather-card/weather-card.com
 import { CurrentWeatherModel } from '../../../../shared/services/weather-api/current-weather.model';
 
 @Component({
-  selector: 'app-weather-cards-list',
-  standalone: true,
-  imports: [
-    WeatherCardComponent
-  ],
-  templateUrl: './weather-cards-list.component.html',
-  styleUrl: './weather-cards-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-weather-cards-list',
+    imports: [
+        WeatherCardComponent
+    ],
+    templateUrl: './weather-cards-list.component.html',
+    styleUrl: './weather-cards-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherCardsListComponent {
 

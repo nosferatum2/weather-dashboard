@@ -10,15 +10,14 @@ import { CurrentWeatherModel } from '../../shared/services/weather-api/current-w
 import { LocalStorageService } from '../../core/services/local-storage/local-storage.service';
 
 @Component({
-  selector: 'app-weather-dashboard',
-  standalone: true,
-  imports: [
-    InputAutocompleteComponent,
-    WeatherCardsListComponent
-  ],
-  templateUrl: './weather-dashboard.component.html',
-  styleUrl: './weather-dashboard.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-weather-dashboard',
+    imports: [
+        InputAutocompleteComponent,
+        WeatherCardsListComponent
+    ],
+    templateUrl: './weather-dashboard.component.html',
+    styleUrl: './weather-dashboard.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherDashboardComponent implements OnInit {
 
